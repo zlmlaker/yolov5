@@ -98,7 +98,7 @@ def compute_iou(b_pred, b_gt):
 
 class A7_Params:
     def __init__(self):
-        self.prefix = "test"
+        self.prefix = "valid"
         # self.prefix = "valid"
         # self.prefix = "train"
         self.vis = 0
@@ -220,7 +220,10 @@ def main():
                 return
             elif key == 32:
                 pause_after_frame = 1 - pause_after_frame
-
+    with open("pred_classes.npy","wb") as f:
+      np.save(f, pred_classes)
+    with open("pred_bboxes.npy","wb") as f:
+      np.save(f, pred_bboxes)
 
 if __name__ == '__main__':
     main()
